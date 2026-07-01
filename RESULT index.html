@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Tobacco Vote</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+.logo{
+    width:180px;
+    height:180px;
+    margin:auto;
+    border:10px solid #ff3b30;
+    border-radius:50%;
+    position:relative;
+    margin-bottom:20px;
+}
+
+.logo::after{
+    content:"";
+    width:220px;
+    height:10px;
+    background:#ff3b30;
+    position:absolute;
+    top:50%;
+    left:-20px;
+    transform:rotate(-35deg);
+}
+
+.icons{
+    font-size:50px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+h1{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+p{
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.vote-box{
+    background:#1e293b;
+    padding:25px;
+    border-radius:20px;
+}
+
+button{
+    border:none;
+    padding:15px 35px;
+    margin:10px;
+    border-radius:50px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.yes{
+    background:#ef4444;
+    color:white;
+}
+
+.no{
+    background:#22c55e;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.result{
+    margin-top:25px;
+    font-size:20px;
+    color:#facc15;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <div class="icons">
+            🚬 🍺 🥃
+        </div>
+    </div>
+
+    <h1>NO TOBACCO INDIA</h1>
+
+    <p>
+        यह एक गुमनाम वोट है।<br>
+        कोई फोन नंबर, आधार नंबर या व्यक्तिगत जानकारी नहीं ली जाएगी।
+    </p>
+
+    <div class="vote-box">
+        <h2>क्या आप सिगरेट या तंबाकू का सेवन करते हैं?</h2>
+
+        <button class="yes" onclick="vote('हाँ')">
+            हाँ
+        </button>
+
+        <button class="no" onclick="vote('नहीं')">
+            नहीं
+        </button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+</div>
+
+<script>
+function vote(answer){
+
+    if(localStorage.getItem("voted")){
+        document.getElementById("result").innerHTML =
+        "⚠️ आपने पहले ही वोट कर दिया है।";
+        return;
+    }
+
+    localStorage.setItem("voted", answer);
+
+    document.getElementById("result").innerHTML =
+    "✅ आपका वोट दर्ज हो गया। धन्यवाद!";
+}
+</script>
+
+</body>
+</html>
